@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, SafeAreaView, ScrollView, Animated, ActivityIndicator, Pressable, Dimensions } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, SafeAreaView, ScrollView, ImageBackground, Animated, ActivityIndicator, Pressable, Dimensions } from 'react-native';
 import { router } from 'expo-router';
 import { ChevronLeft } from 'lucide-react-native';
 import CryptoIcon from '@/components/CryptoIcon';
@@ -29,6 +29,12 @@ export default function BalanceScreen() {
   const fadeAnim = React.useRef(new Animated.Value(0)).current;
   const slideAnim = React.useRef(new Animated.Value(50)).current;
   const successAnim = React.useRef(new Animated.Value(0)).current;
+
+  const screenWidth = Dimensions.get('window').width;
+  const isDesktop = screenWidth > 768;
+  const backgroundSource = isDesktop
+    ? require('../../assets/images/background.png')
+    : require('../../assets/images/background.png');
 
 
   React.useEffect(() => {
@@ -100,7 +106,11 @@ export default function BalanceScreen() {
   };
 
   return (
-    <View style={styles.backgroundImage}>
+    <ImageBackground
+      source={backgroundSource}
+      style={styles.backgroundImage}
+      resizeMode="cover"
+    >
       <Animated.View style={[styles.animatedContainer, {
         opacity: fadeAnim,
         transform: [{ translateY: slideAnim }]
@@ -170,7 +180,7 @@ export default function BalanceScreen() {
         </View>
       </SafeAreaView>
       </Animated.View>
-    </View>
+    </ImageBackground>
   );
 }
 
@@ -179,7 +189,6 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
-    backgroundColor: '#000',
   },
   animatedContainer: {
     flex: 1,

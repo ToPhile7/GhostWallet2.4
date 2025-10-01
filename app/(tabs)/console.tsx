@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, FlatList, Animated, Dimensions, ActivityIndicator } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, FlatList, Animated, ImageBackground, Dimensions, ActivityIndicator } from 'react-native';
 import { useSimulation } from '@/context/SimulationContext';
 import { generateLogEntry } from '@/utils/logGenerator';
 import { Check } from 'lucide-react-native';
@@ -66,6 +66,12 @@ export default function ConsoleScreen() {
   };
 
   const displayAmounts = getDisplayAmounts();
+
+  const screenWidth = Dimensions.get('window').width;
+  const isDesktop = screenWidth > 768;
+  const backgroundSource = isDesktop
+    ? require('../../assets/images/background.png')
+    : require('../../assets/images/background.png');
 
 
   useEffect(() => {
@@ -169,7 +175,11 @@ export default function ConsoleScreen() {
   );
 
   return (
-    <View style={styles.backgroundImage}>
+    <ImageBackground
+      source={backgroundSource}
+      style={styles.backgroundImage}
+      resizeMode="cover"
+    >
       <Animated.View style={[styles.animatedContainer, {
         opacity: fadeAnim,
         transform: [{ translateY: slideAnim }]
@@ -281,7 +291,7 @@ export default function ConsoleScreen() {
         </View>
       </SafeAreaView>
       </Animated.View>
-    </View>
+    </ImageBackground>
   );
 }
 
@@ -290,7 +300,6 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
-    backgroundColor: '#000',
   },
   animatedContainer: {
     flex: 1,
