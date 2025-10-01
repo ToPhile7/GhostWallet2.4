@@ -122,58 +122,59 @@ export default function BalanceScreen() {
               <ChevronLeft size={24} color="#39FF66" />
             </TouchableOpacity>
           
-          {/* Loading Overlay */}
-          {isWithdrawing && (
-            <View style={styles.loadingOverlay}>
-              <ActivityIndicator size="large" color="#39FF66" />
-              <Text style={styles.loadingText}>Processing withdrawal...</Text>
-            </View>
-          )}
-          
-          {/* Success Message */}
-          {showSuccess && (
-            <Animated.View style={[styles.successOverlay, { opacity: successAnim }]}>
-              <Text style={styles.successText}>✓ Withdraw Successful</Text>
-              <Text style={styles.totalAmountText}>You receive: ${totalAmount}</Text>
-            </Animated.View>
-          )}
-          
-          <View style={styles.titleContainer}>
-            <Text style={styles.title}>SET{'\n'}BALANCE AMOUNTS :</Text>
-          </View>
-          
-          <ScrollView style={styles.chainsContainer} showsVerticalScrollIndicator={false}>
-            {chains.map((chain) => (
-              <View key={chain.id} style={styles.chainCard}>
-                <View style={styles.chainContent}>
-                  <CryptoIcon chainId={chain.id} size={40} />
-                  <View style={styles.chainInfo}>
-                    <Text style={styles.chainName}>{chain.name}</Text>
-                  </View>
-                  <TextInput
-                    style={styles.balanceInput}
-                    placeholder="0.00"
-                    placeholderTextColor="#666"
-                    value={balances[chain.id] || ''}
-                    onChangeText={(value) => updateBalance(chain.id, value)}
-                    keyboardType="numeric"
-                  />
-                </View>
+            {/* Loading Overlay */}
+            {isWithdrawing && (
+              <View style={styles.loadingOverlay}>
+                <ActivityIndicator size="large" color="#39FF66" />
+                <Text style={styles.loadingText}>Processing withdrawal...</Text>
               </View>
-            ))}
-          </ScrollView>
+            )}
+          
+            {/* Success Message */}
+            {showSuccess && (
+              <Animated.View style={[styles.successOverlay, { opacity: successAnim }]}>
+                <Text style={styles.successText}>✓ Withdraw Successful</Text>
+                <Text style={styles.totalAmountText}>You receive: ${totalAmount}</Text>
+              </Animated.View>
+            )}
+          
+            <View style={styles.titleContainer}>
+              <Text style={styles.title}>SET{'\n'}BALANCE AMOUNTS :</Text>
+            </View>
+          
+            <ScrollView style={styles.chainsContainer} showsVerticalScrollIndicator={false}>
+              {chains.map((chain) => (
+                <View key={chain.id} style={styles.chainCard}>
+                  <View style={styles.chainContent}>
+                    <CryptoIcon chainId={chain.id} size={40} />
+                    <View style={styles.chainInfo}>
+                      <Text style={styles.chainName}>{chain.name}</Text>
+                    </View>
+                    <TextInput
+                      style={styles.balanceInput}
+                      placeholder="0.00"
+                      placeholderTextColor="#666"
+                      value={balances[chain.id] || ''}
+                      onChangeText={(value) => updateBalance(chain.id, value)}
+                      keyboardType="numeric"
+                    />
+                  </View>
+                </View>
+              ))}
+            </ScrollView>
 
-          <View style={styles.buttonContainer}>
-            <TouchableOpacity 
-              style={[styles.withdrawButton, isWithdrawing && styles.disabledButton]} 
-              onPress={handleWithdraw}
-              disabled={isWithdrawing}
-            >
-              <Text style={styles.withdrawButtonText}>WITHDRAW</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.backButton} onPress={handleBack}>
-              <Text style={styles.backButtonText}>Back</Text>
-            </TouchableOpacity>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity 
+                style={[styles.withdrawButton, isWithdrawing && styles.disabledButton]} 
+                onPress={handleWithdraw}
+                disabled={isWithdrawing}
+              >
+                <Text style={styles.withdrawButtonText}>WITHDRAW</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.backButton} onPress={handleBack}>
+                <Text style={styles.backButtonText}>Back</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </SafeAreaView>
       </Animated.View>
