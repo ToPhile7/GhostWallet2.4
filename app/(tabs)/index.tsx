@@ -113,9 +113,11 @@ export default function LoginScreen() {
 
           {/* Title */}
           <View style={styles.titleContainer}>
-            <Text style={styles.titleGhost}>GHOST</Text>
-            <Text style={styles.titleWallet}>WALLET</Text>
-            <Text style={styles.titleVersion}>2.4</Text>
+            <Image
+              source={require('../../assets/images/ghostwallet.png')}
+              style={styles.titleImage}
+              resizeMode="contain"
+            />
           </View>
 
           {/* Form Section: Username Input and Access Button */}
@@ -183,37 +185,11 @@ const styles = StyleSheet.create({
   titleContainer: {
     alignItems: 'center',
     marginTop: -50,
-    flexDirection: 'row',
     justifyContent: 'center',
   },
-  titleGhost: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#39FF66',
-    letterSpacing: 8,
-    textTransform: 'uppercase',
-    marginRight: 8,
-    textShadowColor: '#39FF66',
-    textShadowOffset: { width: 0, height: 0 },
-    textShadowRadius: 10,
-  },
-  titleWallet: {
-    fontSize: 28,
-    fontWeight: '300',
-    color: '#39FF66',
-    letterSpacing: 8,
-    textTransform: 'uppercase',
-    textShadowColor: '#39FF66',
-    textShadowOffset: { width: 0, height: 0 },
-    textShadowRadius: 10,
-  },
-  titleVersion: {
-    fontSize: 16,
-    fontWeight: 'normal',
-    color: '#39FF66',
-    letterSpacing: 1,
-    marginLeft: 8,
-    marginTop: -15,
+  titleImage: {
+    width: 300,
+    height: 80,
   },
   // New styles for formSection and usernameLabel
   formSection: {
