@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   neonBorder: {
-    flex: 1,
+    flex: 0,
     margin: 0,
     borderWidth: 0,
     borderColor: '#39FF66',
