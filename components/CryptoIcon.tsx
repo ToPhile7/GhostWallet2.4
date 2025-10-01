@@ -75,6 +75,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(57, 255, 102, 0.1)',
     borderWidth: 1,
     borderColor: '#39FF66',
+    display: 'flex',
+    flexDirection: 'column',
   },
   bitcoinIcon: {
     color: '#39FF66',
@@ -82,6 +84,8 @@ const styles = StyleSheet.create({
     textShadowColor: '#39FF66',
     textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 5,
+    textAlign: 'center',
+    lineHeight: undefined,
   },
   ethereumImage: {
     tintColor: '#39FF66',
@@ -89,6 +93,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.8,
     shadowRadius: 5,
+    alignSelf: 'center',
   },
   defaultIcon: {
     color: '#39FF66',
@@ -107,6 +112,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.8,
     shadowRadius: 5,
+    alignSelf: 'center',
   },
   binanceImage: {
     shadowColor: '#39FF66',
