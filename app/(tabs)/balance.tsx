@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
   neonBorder: {
     flex: 1,
     margin: 0,
-    borderWidth: 2,
+    borderWidth: 0,
     borderColor: '#39FF66',
     borderRadius: 0,
   },
