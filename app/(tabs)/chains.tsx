@@ -221,7 +221,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 20,
-    backgroundColor: 'transparent',
+    backgroundColor: '#000',
   },
   selectAllText: {
     fontSize: 18,
