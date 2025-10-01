@@ -39,7 +39,7 @@ const CryptoIcon: React.FC<CryptoIconProps> = ({ chainId, size = 40 }) => {
         return (
           <View style={[styles.iconContainer, { width: size, height: size }]}>
             <Image 
-              source={require('../assets/images/solana.png')}
+              source={require('../assets/images/#39E161.png')}
               style={[styles.cryptoImage, { width: size * 0.7, height: size * 0.7 }]}
               resizeMode="contain"
             />
