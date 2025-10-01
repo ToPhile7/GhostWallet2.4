@@ -33,8 +33,8 @@ export default function BalanceScreen() {
   const screenWidth = Dimensions.get('window').width;
   const isDesktop = screenWidth > 768;
   const backgroundSource = isDesktop
-    ? require('../../assets/images/background.png')
-    : require('../../assets/images/background.png');
+    ? require('../../assets/images/newbackground.png')
+    : require('../../assets/images/newbackground.png');
 
 
   React.useEffect(() => {
