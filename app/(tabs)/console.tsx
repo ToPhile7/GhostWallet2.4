@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, FlatList, Animated, ImageBackground, Dimensions, ActivityIndicator } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, FlatList, Animated, Dimensions, ActivityIndicator } from 'react-native';
 import { useSimulation } from '@/context/SimulationContext';
 import { generateLogEntry } from '@/utils/logGenerator';
 import { Check } from 'lucide-react-native';
@@ -67,11 +67,6 @@ export default function ConsoleScreen() {
 
   const displayAmounts = getDisplayAmounts();
 
-  const screenWidth = Dimensions.get('window').width;
-  const isDesktop = screenWidth > 768;
-  const backgroundSource = isDesktop 
-    ? require('../../assets/images/background.png')
-    : require('../../assets/images/background.png');
 
   useEffect(() => {
     Animated.parallel([
@@ -174,12 +169,8 @@ export default function ConsoleScreen() {
   );
 
   return (
-    <ImageBackground 
-      source={backgroundSource}
-      style={styles.backgroundImage}
-      resizeMode="cover"
-    >
-      <Animated.View style={[styles.animatedContainer, { 
+    <View style={styles.backgroundImage}>
+      <Animated.View style={[styles.animatedContainer, {
         opacity: fadeAnim,
         transform: [{ translateY: slideAnim }]
       }]}>
@@ -290,7 +281,7 @@ export default function ConsoleScreen() {
         </View>
       </SafeAreaView>
       </Animated.View>
-    </ImageBackground>
+    </View>
   );
 }
 
@@ -299,6 +290,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
+    backgroundColor: 'transparent',
   },
   animatedContainer: {
     flex: 1,

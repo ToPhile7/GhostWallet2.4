@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, SafeAreaView, Alert, Platform, Image, ImageBackground, Animated, Dimensions } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, SafeAreaView, Alert, Platform, Image, Animated, Dimensions } from 'react-native';
 import { router } from 'expo-router';
 import { useSimulation } from '@/context/SimulationContext';
 
@@ -10,11 +10,6 @@ export default function LoginScreen() {
   const fadeAnim = React.useRef(new Animated.Value(0)).current;
   const { setCustomAmount, setFoundAmount } = useSimulation();
 
-  const screenWidth = Dimensions.get('window').width;
-  const isDesktop = screenWidth > 768;
-  const backgroundSource = isDesktop 
-    ? require('../../assets/images/background.png')
-    : require('../../assets/images/background.png');
 
   React.useEffect(() => {
     Animated.timing(fadeAnim, {
@@ -91,11 +86,7 @@ export default function LoginScreen() {
   };
 
   return (
-    <ImageBackground 
-      source={backgroundSource}
-      style={styles.backgroundImage}
-      resizeMode="cover"
-    >
+    <View style={styles.backgroundImage}>
       <Animated.View style={[styles.animatedContainer, { opacity: fadeAnim }]}>
         <SafeAreaView style={styles.container}>
         <View style={styles.neonBorder}>
@@ -146,7 +137,7 @@ export default function LoginScreen() {
         </View>
       </SafeAreaView>
       </Animated.View>
-    </ImageBackground>
+    </View>
   );
 }
 
@@ -155,6 +146,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
+    backgroundColor: 'transparent',
   },
   animatedContainer: {
     flex: 1,
