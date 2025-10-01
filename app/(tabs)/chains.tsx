@@ -113,7 +113,7 @@ export default function ChainsScreen() {
         <SafeAreaView style={styles.container}>
           <View style={styles.content}>
           <View style={styles.titleContainer}>
-            <Text style={styles.title}>CHOOSE{'\n'}YOUR BLOCKCHAINS :</Text>
+            <Text style={styles.title}>Select{'\n'}Blockchains :</Text>
           </View>
           
           <ScrollView style={styles.chainsContainer} showsVerticalScrollIndicator={false}>
