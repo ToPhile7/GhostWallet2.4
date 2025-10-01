@@ -99,7 +99,6 @@ export default function LoginScreen() {
     >
       <Animated.View style={[styles.animatedContainer, { opacity: fadeAnim }]}>
         <SafeAreaView style={styles.container}>
-        <View style={styles.neonBorder}>
           <View style={styles.content}>
           {/* Logo */}
           <View style={styles.logoContainer}>
@@ -144,8 +143,7 @@ export default function LoginScreen() {
             <Text style={styles.footerText}>Need help? Telegram</Text>
           </TouchableOpacity>
           </View>
-        </View>
-      </SafeAreaView>
+        </SafeAreaView>
       </Animated.View>
     </ImageBackground>
   );
@@ -163,13 +161,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'transparent',
-  },
-  neonBorder: {
-    flex: 1,
-    margin: 0,
-    borderWidth: 2,
-    borderColor: '#39FF66',
-    borderRadius: 0,
   },
   content: {
     flex: 1,

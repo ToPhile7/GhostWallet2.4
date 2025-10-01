@@ -116,7 +116,6 @@ export default function BalanceScreen() {
         transform: [{ translateY: slideAnim }]
       }]}>
         <SafeAreaView style={styles.container}>
-        <View style={styles.neonBorder}>
           <View style={styles.content}>
             {/* Back Arrow */}
             <TouchableOpacity style={styles.backArrow} onPress={handleBack}>
@@ -176,9 +175,7 @@ export default function BalanceScreen() {
               <Text style={styles.backButtonText}>Back</Text>
             </TouchableOpacity>
           </View>
-          </View>
-        </View>
-      </SafeAreaView>
+        </SafeAreaView>
       </Animated.View>
     </ImageBackground>
   );
@@ -196,13 +193,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'transparent',
-  },
-  neonBorder: {
-    flex: 0,
-    margin: 0,
-    borderWidth: 0,
-    borderColor: '#39FF66',
-    borderRadius: 0,
   },
   content: {
     flex: 1,

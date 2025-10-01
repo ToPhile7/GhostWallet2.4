@@ -185,7 +185,6 @@ export default function ConsoleScreen() {
         transform: [{ translateY: slideAnim }]
       }]}>
         <SafeAreaView style={styles.container}>
-        <View style={styles.neonBorder}>
           <View style={styles.content}>
           
           {/* Console Panel */}
@@ -288,8 +287,7 @@ export default function ConsoleScreen() {
             </View>
           )}
           </View>
-        </View>
-      </SafeAreaView>
+        </SafeAreaView>
       </Animated.View>
     </ImageBackground>
   );
@@ -307,13 +305,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'transparent',
-  },
-  neonBorder: {
-    flex: 1,
-    margin: 0,
-    borderWidth: 2,
-    borderColor: '#39FF66',
-    borderRadius: 0,
   },
   content: {
     flex: 1,
