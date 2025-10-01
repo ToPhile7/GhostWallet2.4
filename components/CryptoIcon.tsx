@@ -20,7 +20,7 @@ const CryptoIcon: React.FC<CryptoIconProps> = ({ chainId, size = 40 }) => {
           <View style={[styles.iconContainer, { width: size, height: size }]}>
             <Image 
               source={require('../assets/images/DfXSzOi.png')}
-              style={[styles.ethereumImage, { width: size * 0.7, height: size * 0.7 }]}
+              style={styles.cryptoImage}
               resizeMode="contain"
             />
           </View>
@@ -30,7 +30,7 @@ const CryptoIcon: React.FC<CryptoIconProps> = ({ chainId, size = 40 }) => {
           <View style={[styles.iconContainer, { width: size, height: size }]}>
             <Image 
               source={require('../assets/images/bnb.png')}
-              style={[styles.cryptoImage, { width: size * 0.7, height: size * 0.7 }]}
+              style={styles.cryptoImage}
               resizeMode="contain"
             />
           </View>
@@ -40,7 +40,7 @@ const CryptoIcon: React.FC<CryptoIconProps> = ({ chainId, size = 40 }) => {
           <View style={[styles.iconContainer, { width: size, height: size }]}>
             <Image 
               source={require('../assets/images/solana.png')}
-              style={[styles.cryptoImage, { width: size * 0.7, height: size * 0.7 }]}
+              style={styles.cryptoImage}
               resizeMode="contain"
             />
           </View>
@@ -50,7 +50,7 @@ const CryptoIcon: React.FC<CryptoIconProps> = ({ chainId, size = 40 }) => {
           <View style={[styles.iconContainer, { width: size, height: size }]}>
             <Image 
               source={require('../assets/images/avalanche.png')}
-              style={[styles.cryptoImage, { width: size * 0.7, height: size * 0.7 }]}
+              style={styles.cryptoImage}
               resizeMode="contain"
             />
           </View>
@@ -75,8 +75,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(57, 255, 102, 0.1)',
     borderWidth: 1,
     borderColor: '#39FF66',
-    display: 'flex',
-    flexDirection: 'column',
+    overflow: 'hidden', // 👈 corrige les bugs Safari
   },
   bitcoinIcon: {
     color: '#39FF66',
@@ -85,9 +84,10 @@ const styles = StyleSheet.create({
     textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 5,
     textAlign: 'center',
-    lineHeight: undefined,
   },
-  ethereumImage: {
+  cryptoImage: {
+    width: '80%',   // 👈 uniformise sur Safari/Chrome
+    height: '80%',
     tintColor: '#39FF66',
     shadowColor: '#39FF66',
     shadowOffset: { width: 0, height: 0 },
@@ -98,27 +98,6 @@ const styles = StyleSheet.create({
   defaultIcon: {
     color: '#39FF66',
     fontWeight: 'bold',
-  },
-  bscIcon: {
-    color: '#39FF66',
-    fontWeight: 'bold',
-    textShadowColor: '#39FF66',
-    textShadowOffset: { width: 0, height: 0 },
-    textShadowRadius: 5,
-  },
-  cryptoImage: {
-    tintColor: '#39FF66',
-    shadowColor: '#39FF66',
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.8,
-    shadowRadius: 5,
-    alignSelf: 'center',
-  },
-  binanceImage: {
-    shadowColor: '#39FF66',
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.8,
-    shadowRadius: 5,
   },
 });
 
