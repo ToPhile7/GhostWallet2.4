@@ -93,11 +93,30 @@ export default function ChainsScreen() {
   }, [currentIndex, handleStart]);
 
   const toggleChain = (chainId: string) => {
-    setSelectedChains(prev => 
-      prev.includes(chainId) 
+    setSelectedChains(prev =>
+      prev.includes(chainId)
         ? prev.filter(id => id !== chainId)
         : [...prev, chainId]
     );
+  };
+
+  const selectAll = () => {
+    if (selectedChains.length === chains.length) {
+      // Si tout est déjà sélectionné, désélectionner tout
+      setSelectedChains([]);
+    } else {
+      // Sélectionner toutes les blockchains avec animation fluide
+      chains.forEach((chain, index) => {
+        setTimeout(() => {
+          setSelectedChains(prev => {
+            if (!prev.includes(chain.id)) {
+              return [...prev, chain.id];
+            }
+            return prev;
+          });
+        }, index * 100); // Délai de 100ms entre chaque sélection
+      });
+    }
   };
 
   return (
@@ -113,9 +132,14 @@ export default function ChainsScreen() {
         <SafeAreaView style={styles.container}>
           <View style={styles.content}>
           <View style={styles.titleContainer}>
-            <Text style={styles.title}>Select Blockchains{'\n'} </Text>
+            <Text style={styles.title}>Select Blockchains</Text>
+            <Text style={styles.subtitle}>Choose which networks to search</Text>
           </View>
-          
+
+          <TouchableOpacity style={styles.selectAllButton} onPress={selectAll}>
+            <Text style={styles.selectAllText}>Select all</Text>
+          </TouchableOpacity>
+
           <ScrollView style={styles.chainsContainer} showsVerticalScrollIndicator={false}>
             {chains.map((chain, index) => (
               <TouchableOpacity
@@ -183,9 +207,30 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     letterSpacing: 2,
   },
+  subtitle: {
+    fontSize: 14,
+    color: '#888',
+    textAlign: 'center',
+    marginTop: 10,
+  },
+  selectAllButton: {
+    height: 50,
+    borderWidth: 2,
+    borderColor: '#39FF66',
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+    backgroundColor: 'transparent',
+  },
+  selectAllText: {
+    fontSize: 18,
+    color: '#39FF66',
+    fontWeight: '600',
+  },
   chainsContainer: {
     flex: 1,
-    marginBottom: 20,
+    marginBottom: 10,
   },
   chainCard: {
     borderWidth: 2,
